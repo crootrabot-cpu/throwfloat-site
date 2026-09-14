@@ -1,0 +1,15 @@
+{
+  "name": "ThrowFloat",
+  "short_name": "ThrowFloat",
+  "description": "Throwable football that inflates into a safety float on water contact.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#e0f0ff",
+  "theme_color": "#0066cc",
+  "icons": [{
+    "src": "assets/day-house-presents.png",
+    "sizes": "512x512",
+    "type": "image/png",
+    "purpose": "any maskable"
+  }]
+}

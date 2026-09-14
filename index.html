@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ThrowFloat — Ball in hand. Lifesaver in water.</title>
+  <meta name="description" content="Throw the football to someone in distress. It hits the water and instantly inflates into a buoyant safety float. One simple throw. Real rescue capability.">
+  <link rel="stylesheet" href="./assets/style.css">
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta name="theme-color" content="#0066cc">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="apple-touch-icon" href="assets/day-house-presents.png">
+</head>
+<body>
+  <header class="site-header">
+    <div class="shell nav-row">
+      <a class="brand" href="#top">ThrowFloat</a>
+      <nav class="nav-links">
+        <a href="#reveal">See the deploy</a>
+        <a href="#how-it-works">How it works</a>
+        <a href="#why-it-wins">Why it wins</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero shell">
+      <div class="hero-card">
+        <div class="hero-copy">
+          <p class="eyebrow">Water rescue concept</p>
+          <h1>Ball in hand.<br>Lifesaver in water.</h1>
+          <p class="lede">ThrowFloat is a regulation football with a built-in water-activated inflator. Throw it to a struggling swimmer. On water contact it rapidly inflates into a horseshoe safety float they can grab. No complex training. One throw changes everything.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#reveal">See it deploy</a>
+            <a class="btn btn-secondary" href="#how-it-works">How it works</a>
+            <button id="installButton" class="btn btn-secondary" style="display:none;background:#0066cc;color:white;border:none;padding:12px 20px;cursor:pointer;">📦 Install on Phone</button>
+          </div>
+          <div class="proof-strip">
+            <div><strong>One throw</strong><span>From boat, dock, or shore.</span></div>
+            <div><strong>Instant buoyancy</strong><span>Water trigger = full inflation in seconds.</span></div>
+            <div><strong>Portable as a ball</strong><span>Carries like normal sports gear until needed.</span></div>
+          </div>
+        </div>
+
+        <div class="hero-stage" data-scene>
+          <div class="toggle-bar">
+            <button class="toggle active" data-toggle="dry" type="button">Dry Ball</button>
+            <button class="toggle" data-toggle="deployed" type="button">Deployed Float</button>
+          </div>
+          <img data-hero-image src="./assets/day-house-presents.png" alt="Regulation football ready to throw">
+          <div class="hero-badge" data-hero-label>Dry mode: Looks and throws like a normal football. Keep it in the boat or on the beach until needed.</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="reveal" class="story shell section-grid section-grid--story">
+      <div class="story-copy panel panel--soft">
+        <p class="eyebrow">The deploy</p>
+        <h2>One throw. Immediate safety.</h2>
+        <p>You see someone in trouble. You throw the football. It hits the water, the sensor triggers, and within seconds it transforms from a ball into a high-visibility inflatable horseshoe float the person can reach and hold onto until help arrives.</p>
+        <p>The same object that was just a fun game ball becomes the rescue tool.</p>
+      </div>
+      <div class="story-media panel">
+        <img src="./assets/night-house-inflatables.png" alt="Inflated safety float in water with person holding on">
+      </div>
+    </section>
+
+    <section id="how-it-works" class="how shell section-grid">
+      <div class="panel panel--soft">
+        <p class="eyebrow">How it works</p>
+        <h2>Throw. Hit water. Inflate.</h2>
+        <ol class="steps">
+          <li><strong>Throw the ball</strong>: Standard grip and throw — anyone can do it. Travels like a normal football.</li>
+          <li><strong>Water contact</strong>: Built-in sensor detects immersion and triggers the compressed gas or chemical inflator.</li>
+          <li><strong>Rapid deploy</strong>: The ball unfolds and inflates into a buoyant safety float with grab handles. High visibility color and reflective strips.</li>
+        </ol>
+      </div>
+      <div class="panel">
+        <img src="./assets/how-it-works.png" alt="Sequence: football thrown, hits water, inflates to float">
+      </div>
+    </section>
+
+    <section id="why-it-wins" class="why shell">
+      <div class="panel panel--compare compare-grid">
+        <div class="compare compare--bad">
+          <p class="eyebrow eyebrow--warn">Traditional rescue</p>
+          <h3>Heavy rings, slow to throw, hard for kids or untrained people to use effectively.</h3>
+          <p>Traditional life rings are bulky, awkward to throw accurately, and often miss or drift away from the person in distress.</p>
+        </div>
+        <div class="compare compare--good">
+          <p class="eyebrow eyebrow--good">ThrowFloat advantage</p>
+          <h3>Familiar, accurate, and automatic.</h3>
+          <p>Everyone knows how to throw a football. The inflation happens automatically on water contact. Compact until needed. Turns a sports ball into a serious safety device.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="concept-note shell">
+      <div class="panel panel--soft note-grid">
+        <div>
+          <p class="eyebrow">Current status</p>
+          <h2>This is the first live concept site.</h2>
+        </div>
+        <p>This page is a static shareable preview of the ThrowFloat idea — no orders, no real product yet. The goal is to make the concept instantly understandable so we can get feedback and move to prototypes, patents, and feasibility testing.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer shell">
+    <p>ThrowFloat concept site — built for fast sharing and iteration. The install button turns this into a phone app with the football icon.</p>
+  </footer>
+
+  <script src="./assets/app.js"></script>
+  <script>
+    let deferredPrompt;
+    const installButton = document.getElementById('installButton');
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      if (installButton) installButton.style.display = 'inline-flex';
+    });
+
+    if (installButton) {
+      installButton.addEventListener('click', () => {
+        if (deferredPrompt) {
+          deferredPrompt.prompt();
+          deferredPrompt.userChoice.then((choice) => {
+            console.log('User choice:', choice.outcome);
+            if (choice.outcome === 'accepted') {
+              installButton.style.display = 'none';
+            }
+            deferredPrompt = null;
+          });
+        }
+      });
+    }
+
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js')
+          .then((registration) => {
+            console.log('✅ ThrowFloat PWA Service Worker registered');
+          })
+          .catch((error) => {
+            console.log('❌ Service Worker registration failed:', error);
+          });
+      });
+    }
+
+    if (window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true) {
+      console.log('📱 Running as installed app');
+    }
+  </script>
+</body>
+</html>
