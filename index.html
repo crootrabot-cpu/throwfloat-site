@@ -11,12 +11,18 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <link rel="apple-touch-icon" href="assets/day-house-presents.png">
+  <style>
+    canvas { background: #0a4d8a; border: 3px solid #fff; border-radius: 8px; max-width: 100%; box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
+    .demo-container { text-align: center; padding: 20px; background: #f0f8ff; border-radius: 12px; }
+    .demo-btn { background: #0066cc; color: white; padding: 15px 30px; font-size: 18px; border: none; border-radius: 50px; cursor: pointer; margin: 10px; }
+  </style>
 </head>
 <body>
   <header class="site-header">
     <div class="shell nav-row">
       <a class="brand" href="#top">ThrowFloat</a>
       <nav class="nav-links">
+        <a href="#demo">Try the Throw</a>
         <a href="#reveal">See the deploy</a>
         <a href="#how-it-works">How it works</a>
         <a href="#why-it-wins">Why it wins</a>
@@ -30,127 +36,212 @@
         <div class="hero-copy">
           <p class="eyebrow">Water rescue concept</p>
           <h1>Ball in hand.<br>Lifesaver in water.</h1>
-          <p class="lede">ThrowFloat is a regulation football with a built-in water-activated inflator. Throw it to a struggling swimmer. On water contact it rapidly inflates into a horseshoe safety float they can grab. No complex training. One throw changes everything.</p>
+          <p class="lede">A regulation football with built-in water sensor and inflator. Throw it to a person in distress. On water contact it rapidly inflates into a horseshoe safety float with handles. No training required. One throw = immediate buoyancy.</p>
           <div class="hero-actions">
-            <a class="btn btn-primary" href="#reveal">See it deploy</a>
-            <a class="btn btn-secondary" href="#how-it-works">How it works</a>
-            <button id="installButton" class="btn btn-secondary" style="display:none;background:#0066cc;color:white;border:none;padding:12px 20px;cursor:pointer;">📦 Install on Phone</button>
+            <a class="btn btn-primary" href="#demo">Try the Throw Simulator</a>
+            <button id="installButton" class="btn btn-secondary" style="background:#0066cc;color:white;border:none;padding:12px 20px;cursor:pointer;">📦 Install as App</button>
           </div>
-          <div class="proof-strip">
-            <div><strong>One throw</strong><span>From boat, dock, or shore.</span></div>
-            <div><strong>Instant buoyancy</strong><span>Water trigger = full inflation in seconds.</span></div>
-            <div><strong>Portable as a ball</strong><span>Carries like normal sports gear until needed.</span></div>
-          </div>
-        </div>
-
-        <div class="hero-stage" data-scene>
-          <div class="toggle-bar">
-            <button class="toggle active" data-toggle="dry" type="button">Dry Ball</button>
-            <button class="toggle" data-toggle="deployed" type="button">Deployed Float</button>
-          </div>
-          <img data-hero-image src="./assets/day-house-presents.png" alt="Regulation football ready to throw">
-          <div class="hero-badge" data-hero-label>Dry mode: Looks and throws like a normal football. Keep it in the boat or on the beach until needed.</div>
         </div>
       </div>
+    </section>
+
+    <section id="demo" class="demo-container shell">
+      <h2>Try It: Throw the Ball</h2>
+      <p>Click Throw — watch it fly, hit water, and inflate into a safety float.</p>
+      <canvas id="simulation" width="600" height="400"></canvas>
+      <button class="demo-btn" onclick="throwBall()">🚀 THROW THE FOOTBALL</button>
+      <p style="font-size:0.9em; color:#555; margin-top:10px;">(Simulation — real version uses compressed gas for fast inflation)</p>
     </section>
 
     <section id="reveal" class="story shell section-grid section-grid--story">
       <div class="story-copy panel panel--soft">
         <p class="eyebrow">The deploy</p>
-        <h2>One throw. Immediate safety.</h2>
-        <p>You see someone in trouble. You throw the football. It hits the water, the sensor triggers, and within seconds it transforms from a ball into a high-visibility inflatable horseshoe float the person can reach and hold onto until help arrives.</p>
-        <p>The same object that was just a fun game ball becomes the rescue tool.</p>
+        <h2>One accurate throw. Automatic rescue.</h2>
+        <p>The ball flies true because it's a football. When it hits water the sensor fires the inflator. Seconds later it's a stable, high-buoyancy float the person can climb onto or hold.</p>
       </div>
       <div class="story-media panel">
-        <img src="./assets/night-house-inflatables.png" alt="Inflated safety float in water with person holding on">
+        <img src="./assets/night-house-inflatables.png" alt="Inflated safety float in water">
       </div>
     </section>
 
     <section id="how-it-works" class="how shell section-grid">
       <div class="panel panel--soft">
         <p class="eyebrow">How it works</p>
-        <h2>Throw. Hit water. Inflate.</h2>
+        <h2>Throw. Contact. Inflate.</h2>
         <ol class="steps">
-          <li><strong>Throw the ball</strong>: Standard grip and throw — anyone can do it. Travels like a normal football.</li>
-          <li><strong>Water contact</strong>: Built-in sensor detects immersion and triggers the compressed gas or chemical inflator.</li>
-          <li><strong>Rapid deploy</strong>: The ball unfolds and inflates into a buoyant safety float with grab handles. High visibility color and reflective strips.</li>
+          <li><strong>Throw like normal</strong> — familiar spiral, good distance even for kids or untrained rescuers.</li>
+          <li><strong>Water sensor triggers</strong> — built-in mechanism releases compressed gas or chemical reaction.</li>
+          <li><strong>Rapid inflation</strong> — ball transforms into a bright orange horseshoe float with reflective tape and grab handles.</li>
         </ol>
       </div>
       <div class="panel">
-        <img src="./assets/how-it-works.png" alt="Sequence: football thrown, hits water, inflates to float">
+        <img src="./assets/how-it-works.png" alt="Throw sequence">
       </div>
     </section>
 
     <section id="why-it-wins" class="why shell">
       <div class="panel panel--compare compare-grid">
         <div class="compare compare--bad">
-          <p class="eyebrow eyebrow--warn">Traditional rescue</p>
-          <h3>Heavy rings, slow to throw, hard for kids or untrained people to use effectively.</h3>
-          <p>Traditional life rings are bulky, awkward to throw accurately, and often miss or drift away from the person in distress.</p>
+          <p class="eyebrow eyebrow--warn">Current options</p>
+          <h3>Bulky rings and bags that are hard to throw accurately under stress.</h3>
         </div>
         <div class="compare compare--good">
-          <p class="eyebrow eyebrow--good">ThrowFloat advantage</p>
-          <h3>Familiar, accurate, and automatic.</h3>
-          <p>Everyone knows how to throw a football. The inflation happens automatically on water contact. Compact until needed. Turns a sports ball into a serious safety device.</p>
+          <p class="eyebrow eyebrow--good">ThrowFloat</p>
+          <h3>Familiar, accurate, automatic, and always ready.</h3>
+          <p>Everyone can throw a football. The inflation is hands-free. Packs like sports gear until the moment it's needed.</p>
         </div>
       </div>
     </section>
 
     <section class="concept-note shell">
       <div class="panel panel--soft note-grid">
-        <div>
-          <p class="eyebrow">Current status</p>
-          <h2>This is the first live concept site.</h2>
-        </div>
-        <p>This page is a static shareable preview of the ThrowFloat idea — no orders, no real product yet. The goal is to make the concept instantly understandable so we can get feedback and move to prototypes, patents, and feasibility testing.</p>
+        <p>This is a concept demonstration site. The simulation above shows the core idea. Real product would use certified materials and tested inflation speeds. Feedback welcome — this is iteration 1.</p>
       </div>
     </section>
   </main>
 
   <footer class="site-footer shell">
-    <p>ThrowFloat concept site — built for fast sharing and iteration. The install button turns this into a phone app with the football icon.</p>
+    <p>ThrowFloat concept — built live in this chat. PWA enabled. The football icon appears on your home screen when installed.</p>
   </footer>
 
-  <script src="./assets/app.js"></script>
   <script>
+    // Simulation Canvas
+    const canvas = document.getElementById('simulation');
+    const ctx = canvas.getContext('2d');
+    let animationFrame;
+    let phase = 'ready'; // ready, flying, hit, inflating, done
+
+    function drawBackground() {
+      // Water
+      ctx.fillStyle = '#0a4d8a';
+      ctx.fillRect(0, 200, 600, 200);
+      // Sky
+      ctx.fillStyle = '#87CEEB';
+      ctx.fillRect(0, 0, 600, 200);
+      // Simple waves
+      ctx.strokeStyle = '#ffffff33';
+      ctx.lineWidth = 4;
+      for (let i = 0; i < 5; i++) {
+        ctx.beginPath();
+        ctx.moveTo(0, 220 + i*15);
+        ctx.quadraticCurveTo(150, 210 + i*15, 300, 225 + i*15);
+        ctx.quadraticCurveTo(450, 210 + i*15, 600, 220 + i*15);
+        ctx.stroke();
+      }
+    }
+
+    function drawBall(x, y, size, inflated = false) {
+      ctx.save();
+      ctx.translate(x, y);
+      if (inflated) {
+        // Float ring
+        ctx.fillStyle = '#ff6600';
+        ctx.beginPath();
+        ctx.ellipse(0, 0, size*1.8, size*0.8, 0, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.fillStyle = '#ffffff';
+        ctx.beginPath();
+        ctx.ellipse(0, 0, size*0.9, size*0.4, 0, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.fillStyle = '#000';
+        ctx.font = 'bold 14px sans-serif';
+        ctx.fillText('SAFETY FLOAT', -45, 5);
+      } else {
+        // Football
+        ctx.fillStyle = '#8B4513';
+        ctx.beginPath();
+        ctx.ellipse(0, 0, size, size*0.6, 0, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.strokeStyle = '#fff';
+        ctx.lineWidth = 4;
+        ctx.beginPath();
+        ctx.ellipse(0, 0, size-5, size*0.5, 0, 0, Math.PI * 2);
+        ctx.stroke();
+        ctx.fillStyle = '#fff';
+        ctx.font = 'bold 18px sans-serif';
+        ctx.fillText('🏈', -10, 8);
+      }
+      ctx.restore();
+    }
+
+    function animateThrow() {
+      let x = 100;
+      let y = 150;
+      let speed = 8;
+      let waterY = 200;
+      let size = 25;
+      let inflateProgress = 0;
+
+      function frame() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        drawBackground();
+
+        if (phase === 'flying') {
+          x += speed;
+          y += (x > 250 ? 3 : -2); // arc
+          if (x > 380) {
+            phase = 'hit';
+          }
+          drawBall(x, y, size);
+        } else if (phase === 'hit') {
+          y = waterY + 10;
+          drawBall(x, y, size);
+          ctx.fillStyle = 'rgba(255,255,255,0.6)';
+          ctx.fillRect(x-30, waterY-5, 60, 20); // splash
+          setTimeout(() => { phase = 'inflating'; }, 400);
+        } else if (phase === 'inflating') {
+          inflateProgress += 0.08;
+          size = 25 + inflateProgress * 35;
+          drawBall(x, waterY + 20, size, inflateProgress > 0.6);
+          if (inflateProgress > 1.2) {
+            phase = 'done';
+            setTimeout(() => { phase = 'ready'; }, 2500);
+          }
+        } else if (phase === 'done') {
+          drawBall(x, waterY + 20, 55, true);
+        } else {
+          drawBall(100, 150, 25);
+        }
+
+        animationFrame = requestAnimationFrame(frame);
+      }
+      frame();
+    }
+
+    window.throwBall = function() {
+      if (animationFrame) cancelAnimationFrame(animationFrame);
+      phase = 'flying';
+      animateThrow();
+    };
+
+    // Initial draw
+    setTimeout(() => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      drawBackground();
+      drawBall(100, 150, 25);
+    }, 100);
+
+    // PWA code (same as before)
     let deferredPrompt;
     const installButton = document.getElementById('installButton');
-
     window.addEventListener('beforeinstallprompt', (e) => {
       e.preventDefault();
       deferredPrompt = e;
       if (installButton) installButton.style.display = 'inline-flex';
     });
-
     if (installButton) {
       installButton.addEventListener('click', () => {
         if (deferredPrompt) {
           deferredPrompt.prompt();
           deferredPrompt.userChoice.then((choice) => {
-            console.log('User choice:', choice.outcome);
-            if (choice.outcome === 'accepted') {
-              installButton.style.display = 'none';
-            }
+            if (choice.outcome === 'accepted') installButton.style.display = 'none';
             deferredPrompt = null;
           });
         }
       });
     }
-
     if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/sw.js')
-          .then((registration) => {
-            console.log('✅ ThrowFloat PWA Service Worker registered');
-          })
-          .catch((error) => {
-            console.log('❌ Service Worker registration failed:', error);
-          });
-      });
-    }
-
-    if (window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true) {
-      console.log('📱 Running as installed app');
+      navigator.serviceWorker.register('/sw.js');
     }
   </script>
 </body>
